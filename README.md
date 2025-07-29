@@ -1,39 +1,106 @@
-🖐️ Speak & Point with GPT-4o
+# Point and Create Assistant
 
-An Interpretability-Driven Gesture Interface for Multimodal AI Systems
+This interactive Streamlit prototype allows users to **point at a region in a live camera feed** and receive a response from **GPT-4o** based on what they’re gesturing toward.
 
-Overview
-This prototype explores how AI systems—particularly multimodal LLMs like GPT-4o—can be directed through natural, physical gestures rather than traditional UI elements. Using MediaPipe hand tracking, camera input, and GPT-4o’s image-text reasoning, it allows a user to point at a region and have the assistant interpret and respond to what the user is referencing.
+It’s a lightweight, spatially grounded demo that blends **computer vision**, **gesture tracking**, and **LLM interpretability** — perfect for prototyping AI co-pilots for physical tasks.
 
-⸻
+---
 
-🎯 Why This Matters for Interpretability
+## 🧠 What It Does
 
-LLMs are often opaque: users don’t know what the model is attending to, why it gave a response, or how it connects inputs to outputs.
-This project provides a physical interface layer that helps:
-	•	✅ Localize user intent: By detecting where a user is pointing, we can spatially crop and isolate what they’re referring to.
-	•	✅ Constrain model attention: By feeding GPT-4o a cropped image region, we help ground the assistant’s focus—mirroring interpretability ideas like saliency or Grad-CAM in vision models.
-	•	✅ Bridge human-AI alignment: The assistant doesn’t just process an image; it’s guided by a natural human gesture. This opens the door to co-pilots that are physically contextual, not just linguistically smart.
+- 📷 Captures a webcam image via Streamlit
+- ✋ Detects a hand and recognizes pointing using MediaPipe
+- 📍 Crops the region being pointed at
+- 🧾 Sends the cropped region and prompt to OpenAI GPT-4o
+- 💬 Displays the assistant’s multimodal response
 
-⸻
+---
 
-🧠 Architecture
-	•	📸 st.camera_input() — Live image capture via Streamlit
-	•	✋ MediaPipe Hands — Extracts fingertip position and detects pointing gestures
-	•	📦 Cropping logic — Extracts a region around the fingertip (context-aware attention proxy)
-	•	🧠 GPT-4o — Receives a multimodal prompt: user’s spoken intent + the image crop
-	•	🖼️ GPT Response — Shown side-by-side with the annotated image
+## 🔍 Why It Matters
 
+This app is a sandbox for exploring:
 
-💡 Use Cases
-	•	A kitchen assistant that responds to gestures like “what is this?” while pointing at an ingredient
-	•	A workshop tool that explains objects or instructions based on visual reference
-	•	A live demo scaffold for interpretability education: “what did the model focus on when I pointed here?”
+- **Interpretability** — What happens when we give the model focused spatial input?
+- **Physical-world grounding** — Can a model reason about real-world objects we gesture toward?
+- **AI co-pilots for physical tasks** — Think: home assistants, repair guides, recipe helpers
 
-⸻
+---
 
-🛠️ Built With
-	•	Python, Streamlit
-	•	MediaPipe (hand tracking)
-	•	OpenAI GPT-4o (Vision + Text)
-	•	PIL, NumPy, cv2
+## 🚀 How to Run Locally
+
+### 1. Clone the repo
+
+```bash
+git clone https://github.com/YOUR_USERNAME/speak-point-gpt4o.git
+cd speak-point-gpt4o
+```
+
+### 2. Create and activate a virtual environment
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+
+### 3. Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 4. Set your OpenAI key in a `.env` file
+
+Create a file named `.env` in the root of your project:
+
+```env
+OPENAI_API_KEY=sk-...
+```
+
+### 5. Run the Streamlit app
+
+```bash
+streamlit run app.py
+```
+
+---
+
+## 🧾 Requirements
+
+These are defined in `requirements.txt`, but key packages include:
+
+- `streamlit`
+- `mediapipe`
+- `openai`
+- `opencv-python`
+- `pillow`
+- `numpy`
+- `python-dotenv`
+
+---
+
+## 🧪 Example Use Cases
+
+- Interpretable gesture-based interfaces for physical environments
+- Prototyping AI assistants that understand *where* you’re pointing
+- Spatial reasoning experiments with GPT-4o multimodal input
+
+---
+
+## 🛠️ Roadmap Ideas
+
+- [ ] Live webcam preview before capture
+- [ ] Voice + gesture input loop
+- [ ] Grad-CAM style token attention overlays
+- [ ] Gesture classification beyond pointing
+- [ ] Streamlit Cloud or Vercel deployment
+
+---
+
+## 👤 Made by
+
+**Samuel Robson**  
+Product-minded strategist and AI prototyper  
+🎓 MIMS @ UC Berkeley  
+🛠️ Interpretability · Tangible Interfaces · Human-Centered AI
+
+[GitHub](https://github.com/samuelrobson4) · [LinkedIn](https://www.linkedin.com/in/samuelrobson1/)
