@@ -1,6 +1,16 @@
-.env
+# Python
 __pycache__/
-*.pyc
+*.py[cod]
+
+# Virtualenv
 venv/
-.idea/
+
+# Secrets
+.env
+
+# macOS
 .DS_Store
+
+# Editor settings
+.vscode/
+.idea/
